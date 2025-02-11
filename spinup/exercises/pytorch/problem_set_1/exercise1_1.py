@@ -28,7 +28,15 @@ def gaussian_likelihood(x, mu, log_std):
     #   YOUR CODE HERE    #
     #                     #
     #######################
-    return torch.zeros(1)
+    # method 1: using pytorch built-in function
+    # normal = torch.distributions.Normal(mu, torch.exp(log_std))
+    # logp = normal.log_prob(x)
+    # return logp.sum(dim=-1)
+
+    # method 2: use math
+    EPS = 1e-8
+    pre_sum = -0.5 * (((x-mu)/(torch.exp(log_std)+EPS))**2 + 2*log_std + np.log(2*np.pi))
+    return pre_sum.sum(axis=-1)
 
 
 if __name__ == '__main__':
