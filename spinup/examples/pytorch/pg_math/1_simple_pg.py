@@ -19,6 +19,7 @@ def train(env_name='CartPole-v0', hidden_sizes=[32], lr=1e-2,
 
     # make environment, check spaces, get obs / act dims
     env = gym.make(env_name)
+    print(env)
     assert isinstance(env.observation_space, Box), \
         "This example only works for envs with continuous state spaces."
     assert isinstance(env.action_space, Discrete), \
