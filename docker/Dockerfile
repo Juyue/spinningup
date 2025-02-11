@@ -58,7 +58,7 @@ RUN conda update -n base conda && \
 RUN conda init bash
 
 ## Install spinningup
-RUN conda create -n spinningup python=3.6
+RUN conda create -n spinningup python=3.7 # 3.7 works with existing setup.py
 RUN git clone https://github.com/Juyue/spinningup.git && \
     cd spinningup && \
     conda run -n spinningup pip install -e .
